@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FinTrack Pro | Executive Analytics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Syne:wght@400;500;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <span class="logo-icon"><i data-lucide="trending-up"></i></span>
+      <span class="logo-text">FinTrack<span class="logo-accent">Pro</span></span>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="#" class="nav-item active" data-page="dashboard">
+        <i data-lucide="layout-dashboard"></i><span>Dashboard</span>
+      </a>
+      <a href="#" class="nav-item" data-page="analytics">
+        <i data-lucide="bar-chart-2"></i><span>Analytics</span>
+      </a>
+      <a href="#" class="nav-item" data-page="portfolio">
+        <i data-lucide="briefcase"></i><span>Portfolio</span>
+      </a>
+      <a href="#" class="nav-item" data-page="transactions">
+        <i data-lucide="arrow-left-right"></i><span>Transactions</span>
+      </a>
+      <a href="#" class="nav-item" data-page="reports">
+        <i data-lucide="file-bar-chart"></i><span>Reports</span>
+      </a>
+      <a href="#" class="nav-item" data-page="markets">
+        <i data-lucide="globe"></i><span>Markets</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a href="#" class="nav-item" data-page="settings">
+        <i data-lucide="settings"></i><span>Settings</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-wrapper">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="menu-toggle" id="menuToggle">
+          <i data-lucide="menu"></i>
+        </button>
+        <div class="page-title">
+          <h1>Executive Dashboard</h1>
+          <span class="breadcrumb">Overview / Analytics</span>
+        </div>
+      </div>
+
+      <div class="topbar-right">
+        <!-- Search -->
+        <div class="search-bar">
+          <i data-lucide="search"></i>
+          <input type="text" placeholder="Search assets, reports..." />
+        </div>
+
+        <!-- Notifications -->
+        <div class="notif-wrapper" id="notifWrapper">
+          <button class="icon-btn" id="notifBtn">
+            <i data-lucide="bell"></i>
+            <span class="pulse-dot" id="pulseDot"></span>
+          </button>
+          <div class="notif-panel" id="notifPanel">
+            <div class="notif-header">
+              <span>Notifications</span>
+              <button class="clear-btn" id="clearNotif">Clear all</button>
+            </div>
+            <div class="notif-list">
+              <div class="notif-item unread">
+                <div class="notif-icon green"><i data-lucide="trending-up"></i></div>
+                <div class="notif-body">
+                  <p>Portfolio up <strong>+4.2%</strong> today</p>
+                  <span>2 min ago</span>
+                </div>
+              </div>
+              <div class="notif-item unread">
+                <div class="notif-icon cyan"><i data-lucide="zap"></i></div>
+                <div class="notif-body">
+                  <p>New market signal: <strong>BTC/USD</strong></p>
+                  <span>15 min ago</span>
+                </div>
+              </div>
+              <div class="notif-item">
+                <div class="notif-icon yellow"><i data-lucide="alert-triangle"></i></div>
+                <div class="notif-body">
+                  <p>Risk threshold reached on <strong>AAPL</strong></p>
+                  <span>1 hr ago</span>
+                </div>
+              </div>
+              <div class="notif-item">
+                <div class="notif-icon purple"><i data-lucide="file-text"></i></div>
+                <div class="notif-body">
+                  <p>Q2 Report is ready to download</p>
+                  <span>3 hr ago</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- User Menu -->
+        <div class="user-menu-wrapper" id="userMenuWrapper">
+          <button class="user-btn" id="userBtn">
+            <div class="user-avatar">CC</div>
+            <div class="user-info">
+              <span class="user-name">Collins Chele</span>
+              <span class="user-role">Lead Developer</span>
+            </div>
+            <i data-lucide="chevron-down" class="chevron-icon" id="chevronIcon"></i>
+          </button>
+          <div class="user-dropdown" id="userDropdown">
+            <a href="#" class="dropdown-item">
+              <i data-lucide="user"></i> My Profile
+            </a>
+            <a href="#" class="dropdown-item">
+              <i data-lucide="shield"></i> Security
+            </a>
+            <a href="#" class="dropdown-item">
+              <i data-lucide="sliders"></i> Preferences
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item danger">
+              <i data-lucide="log-out"></i> Logout
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- DASHBOARD CONTENT -->
+    <main class="dashboard">
+
+      <!-- KPI CARDS -->
+      <section class="kpi-grid">
+        <div class="kpi-card" data-delay="0">
+          <div class="kpi-top">
+            <span class="kpi-label">Total Revenue</span>
+            <div class="kpi-icon cyan"><i data-lucide="dollar-sign"></i></div>
+          </div>
+          <div class="kpi-value">$2,847,391</div>
+          <div class="kpi-change positive"><i data-lucide="trending-up"></i> +12.4% vs last month</div>
+          <div class="kpi-sparkline"><canvas id="spark1"></canvas></div>
+        </div>
+
+        <div class="kpi-card" data-delay="1">
+          <div class="kpi-top">
+            <span class="kpi-label">Net Profit</span>
+            <div class="kpi-icon green"><i data-lucide="trending-up"></i></div>
+          </div>
+          <div class="kpi-value">$941,028</div>
+          <div class="kpi-change positive"><i data-lucide="trending-up"></i> +8.1% vs last month</div>
+          <div class="kpi-sparkline"><canvas id="spark2"></canvas></div>
+        </div>
+
+        <div class="kpi-card" data-delay="2">
+          <div class="kpi-top">
+            <span class="kpi-label">Active Assets</span>
+            <div class="kpi-icon purple"><i data-lucide="briefcase"></i></div>
+          </div>
+          <div class="kpi-value">1,204</div>
+          <div class="kpi-change positive"><i data-lucide="trending-up"></i> +34 new this week</div>
+          <div class="kpi-sparkline"><canvas id="spark3"></canvas></div>
+        </div>
+
+        <div class="kpi-card" data-delay="3">
+          <div class="kpi-top">
+            <span class="kpi-label">Risk Score</span>
+            <div class="kpi-icon orange"><i data-lucide="shield-alert"></i></div>
+          </div>
+          <div class="kpi-value">3.2 / 10</div>
+          <div class="kpi-change negative"><i data-lucide="trending-down"></i> -0.4 improved</div>
+          <div class="kpi-sparkline"><canvas id="spark4"></canvas></div>
+        </div>
+      </section>
+
+      <!-- MAIN CHARTS ROW -->
+      <section class="charts-row">
+        <div class="chart-card wide">
+          <div class="chart-header">
+            <div>
+              <h2>Revenue Performance</h2>
+              <p class="chart-subtitle">12-month rolling analysis</p>
+            </div>
+            <div class="chart-controls">
+              <button class="ctrl-btn active" data-range="1Y">1Y</button>
+              <button class="ctrl-btn" data-range="6M">6M</button>
+              <button class="ctrl-btn" data-range="3M">3M</button>
+              <button class="ctrl-btn" data-range="1M">1M</button>
+            </div>
+          </div>
+          <div class="chart-body">
+            <canvas id="revenueChart"></canvas>
+          </div>
+        </div>
+
+        <div class="chart-card narrow">
+          <div class="chart-header">
+            <div>
+              <h2>Asset Allocation</h2>
+              <p class="chart-subtitle">Current distribution</p>
+            </div>
+          </div>
+          <div class="chart-body donut-wrap">
+            <canvas id="allocationChart"></canvas>
+            <div class="donut-center">
+              <span class="donut-total">$2.8M</span>
+              <span class="donut-label">Total</span>
+            </div>
+          </div>
+          <div class="legend-list">
+            <div class="legend-item"><span class="dot cyan"></span>Equities <span>42%</span></div>
+            <div class="legend-item"><span class="dot green"></span>Bonds <span>28%</span></div>
+            <div class="legend-item"><span class="dot purple"></span>Crypto <span>18%</span></div>
+            <div class="legend-item"><span class="dot orange"></span>Real Estate <span>12%</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BOTTOM ROW -->
+      <section class="bottom-row">
+
+        <!-- Transactions Table -->
+        <div class="table-card">
+          <div class="chart-header">
+            <div>
+              <h2>Recent Transactions</h2>
+              <p class="chart-subtitle">Last 5 activity logs</p>
+            </div>
+            <a href="#" class="view-all">View all <i data-lucide="arrow-right"></i></a>
+          </div>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Asset</th>
+                <th>Type</th>
+                <th>Amount</th>
+                <th>Date</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><div class="asset-cell"><span class="asset-badge">AAPL</span> Apple Inc.</div></td>
+                <td><span class="type-badge buy">BUY</span></td>
+                <td class="amount positive">+$12,450</td>
+                <td>Feb 24, 2026</td>
+                <td><span class="status completed">Completed</span></td>
+              </tr>
+              <tr>
+                <td><div class="asset-cell"><span class="asset-badge btc">BTC</span> Bitcoin</div></td>
+                <td><span class="type-badge sell">SELL</span></td>
+                <td class="amount negative">-$8,200</td>
+                <td>Feb 23, 2026</td>
+                <td><span class="status completed">Completed</span></td>
+              </tr>
+              <tr>
+                <td><div class="asset-cell"><span class="asset-badge tsla">TSLA</span> Tesla</div></td>
+                <td><span class="type-badge buy">BUY</span></td>
+                <td class="amount positive">+$5,780</td>
+                <td>Feb 22, 2026</td>
+                <td><span class="status pending">Pending</span></td>
+              </tr>
+              <tr>
+                <td><div class="asset-cell"><span class="asset-badge eth">ETH</span> Ethereum</div></td>
+                <td><span class="type-badge buy">BUY</span></td>
+                <td class="amount positive">+$3,100</td>
+                <td>Feb 21, 2026</td>
+                <td><span class="status completed">Completed</span></td>
+              </tr>
+              <tr>
+                <td><div class="asset-cell"><span class="asset-badge msft">MSFT</span> Microsoft</div></td>
+                <td><span class="type-badge sell">SELL</span></td>
+                <td class="amount negative">-$15,900</td>
+                <td>Feb 20, 2026</td>
+                <td><span class="status failed">Failed</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Bar Chart -->
+        <div class="chart-card side-chart">
+          <div class="chart-header">
+            <div>
+              <h2>Monthly P&L</h2>
+              <p class="chart-subtitle">Profit & Loss breakdown</p>
+            </div>
+          </div>
+          <div class="chart-body">
+            <canvas id="plChart"></canvas>
+          </div>
+        </div>
+
+      </section>
+    </main>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
